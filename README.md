@@ -26,7 +26,8 @@ A powerful AI chat application built with Django, LangChain, VectorDB, and Gemin
 1. **Clone the repository**
    ```bash
    git clone <repository-url>
-   cd aichat
+   cd AI-Cha
+
    ```
 
 2. **Create a virtual environment**
