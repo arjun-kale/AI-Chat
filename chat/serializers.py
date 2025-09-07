@@ -25,9 +25,9 @@ class ConversationSerializer(serializers.ModelSerializer):
 
 class ChatRequestSerializer(serializers.Serializer):
     message = serializers.CharField(max_length=1000)
-    session_id = serializers.CharField(max_length=100, required=False)
+    session_id = serializers.CharField(max_length=100, required=False, allow_null=True, allow_blank=True)
 
 
 class FileUploadSerializer(serializers.Serializer):
     file = serializers.FileField()
-    session_id = serializers.CharField(max_length=100, required=False)
+    session_id = serializers.CharField(max_length=100, required=False, allow_null=True, allow_blank=True)

@@ -4,6 +4,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from django.shortcuts import render
 from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
 from .models import Conversation, Message, Document
 from .serializers import (
     ConversationSerializer, 
@@ -46,10 +47,17 @@ def get_conversation(request, session_id):
         return Response({'error': 'Conversation not found'}, status=status.HTTP_404_NOT_FOUND)
 
 
+@csrf_exempt
 @api_view(['POST'])
 def send_message(request):
     """Send a message and get AI response"""
-    serializer = ChatRequestSerializer(data=request.data)
+    # Handle both JSON and form data
+    if request.content_type == 'application/json':
+        data = request.data
+    else:
+        data = request.POST
+    
+    serializer = ChatRequestSerializer(data=data)
     if not serializer.is_valid():
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
@@ -97,6 +105,7 @@ def send_message(request):
     })
 
 
+@csrf_exempt
 @api_view(['POST'])
 @parser_classes([MultiPartParser, FormParser])
 def upload_file(request):

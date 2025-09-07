@@ -104,31 +104,50 @@ class ChatApp {
         this.showLoading();
 
         try {
+            console.log('Sending message:', message);
+            console.log('Session ID:', this.sessionId);
+            
+            const requestData = {
+                message: message
+            };
+            
+            // Only include session_id if it exists
+            if (this.sessionId) {
+                requestData.session_id = this.sessionId;
+            }
+            
             const response = await fetch('/api/chat/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({
-                    message: message,
-                    session_id: this.sessionId
-                }),
+                body: JSON.stringify(requestData),
             });
+
+            console.log('Response status:', response.status);
+            console.log('Response headers:', response.headers);
 
             if (response.ok) {
                 const data = await response.json();
+                console.log('Response data:', data);
                 this.sessionId = data.session_id;
                 this.saveSessionToStorage();
                 
                 // Add AI response to chat
                 this.addMessageToChat('assistant', data.ai_message.content);
             } else {
-                const errorData = await response.json();
-                this.showError(errorData.error || 'Failed to send message');
+                const errorText = await response.text();
+                console.error('Error response:', errorText);
+                try {
+                    const errorData = JSON.parse(errorText);
+                    this.showError(errorData.error || 'Failed to send message');
+                } catch (e) {
+                    this.showError('Failed to send message: ' + errorText);
+                }
             }
         } catch (error) {
             console.error('Error sending message:', error);
-            this.showError('Failed to send message');
+            this.showError('Failed to send message: ' + error.message);
         } finally {
             this.hideLoading();
         }
