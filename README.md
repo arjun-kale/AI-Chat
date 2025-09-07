@@ -56,17 +56,12 @@ A powerful AI chat application built with Django, LangChain, VectorDB, and Gemin
    python manage.py migrate
    ```
 
-6. **Create a superuser (optional)**
-   ```bash
-   python manage.py createsuperuser
-   ```
-
-7. **Run the development server**
+6. **Run the development server**
    ```bash
    python manage.py runserver
    ```
 
-8. **Open your browser**
+7. **Open your browser**
    Navigate to `http://127.0.0.1:8000`
 
 ## Getting a Gemini API Key
