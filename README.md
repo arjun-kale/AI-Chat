@@ -21,7 +21,8 @@ A Basic AI chat application built with Django, LangChain, VectorDB, and Gemini A
 - **Frontend**: HTML, CSS, JavaScript
 - **File Processing**: PyPDF2, Pillow
 
-## Installation
+## Installation 
+Go step-by-step or Just run setup.py
 
 1. **Clone the repository**
    ```bash
