@@ -1,6 +1,6 @@
 # AI Chat Assistant
 
-A powerful AI chat application built with Django, LangChain, VectorDB, and Gemini AI. Users can interact with an AI assistant and upload PDF or image files to get AI-powered responses.
+A Basic AI chat application built with Django, LangChain, VectorDB, and Gemini AI. Users can interact with an AI assistant and upload PDF or image files to get AI-powered responses.
 
 ## Features
 
@@ -16,7 +16,7 @@ A powerful AI chat application built with Django, LangChain, VectorDB, and Gemin
 
 
 - **Backend**: Django 4.2.7
-- **AI/ML**: LangChain, Google Gemini
+- **AI/ML**: LangChain, Google Gemini, Langchain_community 
 - **Vector Database**: ChromaDB
 - **Frontend**: HTML, CSS, JavaScript
 - **File Processing**: PyPDF2, Pillow
@@ -66,7 +66,7 @@ A powerful AI chat application built with Django, LangChain, VectorDB, and Gemin
 
 ## Getting a Gemini API Key
 
-1. Go to [Google AI Studio](https://makersuite.google.com/app/apikey)
+1. Go to #Google AI Studio
 2. Sign in with your Google account
 3. Click "Create API Key"
 4. Copy the generated API key
@@ -138,22 +138,8 @@ The application can be configured through Django settings:
 3. **Vector DB Issues**: Ensure the vectordb directory is writable
 4. **CORS Issues**: Make sure CORS settings are properly configured for your domain
 
-### Debug Mode
-
-To enable debug mode, set `DEBUG = True` in `settings.py`. This will show detailed error messages.
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests if applicable
-5. Submit a pull request
 
 ## License
 
 This project is licensed under the MIT License.
 
-## Support
-
-For support or questions, please open an issue in the repository.
