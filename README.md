@@ -14,6 +14,7 @@ A powerful AI chat application built with Django, LangChain, VectorDB, and Gemin
 
 ## Tech Stack
 
+
 - **Backend**: Django 4.2.7
 - **AI/ML**: LangChain, Google Gemini
 - **Vector Database**: ChromaDB
